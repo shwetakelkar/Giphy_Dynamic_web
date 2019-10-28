@@ -1,0 +1,19 @@
+ input{
+     position: relative;
+     width:10px;
+ }
+ 
+ body{
+     background: rgb(239, 239, 239);
+ }
+ button:focus{
+     background: darkblue;
+
+ }
+ button:hover{
+    background: darkblue;
+
+}
+.someclass {
+    float: right !important;
+  }
