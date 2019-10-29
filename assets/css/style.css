@@ -1,19 +1,21 @@
- input{
-     position: relative;
-     width:10px;
- }
- 
+
  body{
      background: rgb(239, 239, 239);
  }
- button:focus{
-     background: darkblue;
+ 
 
- }
- button:hover{
-    background: darkblue;
+.focus-cls:focus
+{
+    background:darkblue !important ;
 
 }
+
 .someclass {
-    float: right !important;
-  }
+    display: flex;
+    flex-direction: row-reverse;
+}
+img{
+    width:200px;
+    height:100px;
+}
+

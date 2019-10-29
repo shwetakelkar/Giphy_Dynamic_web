@@ -7,16 +7,18 @@ $(document).ready(function(){
 
         for(var i=0;i<btnArray.length;i++)
         {
-            var newbtn = $("<button>").attr("class","btn-primary btn m-1").text(btnArray[i]).appendTo("#btn-row");
+            var newbtn = $("<button>").attr("class","btn-primary btn focus-cls m-1").text(btnArray[i]).appendTo("#btn-row");
         }
     }
+
+    
     /*-------------------------------------------------------------
     this part of code execute .on click of submit button.
     and create new button/s with the label of input text.
     and puch the value of new instrument in btnArray so it won't
     get duplicated in future. 
     --------------------------------------------------------------*/
-    $(".btn").on("click",function(){
+    $(".btn").on("click",function(e){
         
         e.preventDefault();
         var inputTextVal = $("#instru-name").val();
@@ -26,12 +28,12 @@ $(document).ready(function(){
         if(btnArray.indexOf(inputTextVal) == -1 && inputTextVal)
         {
             ;
-            var newbtn = $("<button>").attr("class","btn-primary btn m-1").text(inputTextVal).appendTo("#btn-row");
+            var newbtn = $("<button>").attr("class","btn-primary btn focus-cls m-1").text(inputTextVal).appendTo("#btn-row");
             btnArray.push(inputTextVal);
             
         }
         else if(btnArray.indexOf(inputTextVal) !== -1){
-            $("<p>").text("already exist").appendTo(".col-md-3")
+            $("<p>").text("already exist").appendTo(".col-md-3");
         }
     });
 
@@ -47,8 +49,9 @@ $(document).ready(function(){
         
         var instrument = $(this).text();
         
+        
         $.ajax({
-            url:"https://api.giphy.com/v1/gifs/search?q="+instrument+"&api_key="+"m08zIpacZ3RD136N3O7yY1AV8K9JTQNn",
+            url:"https://api.giphy.com/v1/gifs/search?q="+instrument+"&api_key="+"m08zIpacZ3RD136N3O7yY1AV8K9JTQNn&limit="+limit,
             method:'GET'
         })
         .then(function(response){
@@ -88,12 +91,12 @@ It will create new elements to show the images of selection
 arguments: response
 return : none
 ----------------------------------------------------------------*/
-
+const limit = 10;
 function displayImages(response) {
     var imgDiv = $("<div class='row'>").appendTo("#img-col");
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < limit; i++) {
         if (response.data[i].rating === "g" || response.data[i].rating === "pg") {
-            var imgToDisplay = $("<img>");
+            var imgToDisplay = $("<img width=200px>");
             var imgCol = $("<div class='col-lg-3 col-md-4 mr-1 mt-2'>").appendTo(imgDiv);
             $("<p class= 'mb-3'>").text("Rating : " + response.data[i].rating).appendTo(imgCol);
             imgToDisplay.attr({
