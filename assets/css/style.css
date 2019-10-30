@@ -4,11 +4,14 @@
  }
  
 
-.focus-cls:focus
+.active,.focus-cls:focus,.focus-cls:hover
 {
     background:darkblue !important ;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
 
 }
+
 
 .someclass {
     display: flex;
